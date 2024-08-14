@@ -43,6 +43,7 @@ RUN pecl install smbclient apcu redis
 
 # 调整配置文件
 RUN cp /tmp/php/php.ini-development /usr/local/php/etc/php.ini
+RUN sed -i '/;extension=shmop/a\extension=apcu.so\nextension=redis.so' "/usr/local/php/etc/php.ini"
 
 # 创建最终的镜像
 FROM alpine:3.20
